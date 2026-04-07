@@ -1,4 +1,4 @@
-const posts = [
+const myPosts = [
     {
         id: 1,
         title: 'Introduzione al Blog',
@@ -37,4 +37,4 @@ const posts = [
 ];
 
 
-module.exports = posts
+module.exports = myPosts
