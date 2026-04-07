@@ -1,14 +1,14 @@
 const express = require("express")
 const router = express.Router()
-const posts = require("../data/myPosts")
+
 const postController = require("../controllers/postsController")
 
 
-// far vedere il singolo post nell id corrente                INDEX
-router.get("/", postController.show)
+//lista json di tutti i post, get presi                       INDEX
+router.get("/", postController.index)
 
-//lista json di tutti i post, get presi                       SHOW
-router.get("/:id", postController.index)
+// far vedere il singolo post nell id corrente                SHOW
+router.get("/:id", postController.show)
 
 // lista dei post salvati, post                               CREATE
 router.post('/', postController.store)

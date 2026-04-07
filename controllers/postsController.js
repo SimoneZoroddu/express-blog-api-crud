@@ -1,29 +1,30 @@
 const myPosts = require("../data/myPosts")
 
-// far vedere il singolo post nell id corrente                INDEX
+// lista dei post salvati, post                               CREATE
 function index(req, res) {
+    res.json(myPosts)
+}
+
+// far vedere il singolo post nell id corrente                INDEX
+function show(req, res) {
     const id = parseInt(req.params.id) // parseInt Necessario
     const post = myPosts.filter(post => post.id === id)
     res.json(post)
 }
 
-// lista dei post salvati, post                               CREATE
-function show(req, res) {
-    res.json(myPosts)
-}
 
 // cambiare tutto l elemento dell id corrente                 UPDATE
 function store(req, res) {
-    res.send(`cambiare tutto l elemento id ${req.params.id}`)
+    res.send(`Creare nuovi posts ${req.params.id}`)
 }
 
 // modificare una piccola parte dell elemento id corrente     UPDATE
 function update(req, res) {
-    res.send(`cambiare una parte dell elemento id ${req.params.id}`)
+    res.send(`cambiare tutto dell elemento id ${req.params.id}`)
 }
 
 function modify(req, res) {
-    res.send(`rimuovere tutto l elemento id ${req.params.id}`)
+    res.send(`modificare una piccola parte dell id corrente ${req.params.id}`)
 }
 
 //eliminare il singolo elemento id corrente                   DELETE
