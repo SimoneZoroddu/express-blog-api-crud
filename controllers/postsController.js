@@ -18,13 +18,14 @@ function show(req, res) {
 function store(req, res) {
     const newId = myPosts[myPosts.length - 1].id + 1;
     console.log(req.body);
-    
+
     // Creiamo un nuovo post
     const newPost = {
         id: newId,
         title: req.body.title,
         content: req.body.content,
-        image: req.body.image
+        image: req.body.image,
+        tags: req.body.tags
     }
 
     // Aggiungiamo il nuovo post al nostro array
@@ -41,7 +42,34 @@ function store(req, res) {
 
 // cambiare tutto l elemento dell id corrente, put/:id                    UPDATE
 function update(req, res) {
-    res.send(`cambiare tutto dell elemento id ${req.params.id}`)
+
+    
+    const id = parseInt(req.params.id)
+
+    // cerchiamo il nostro post tramite id
+    const post = myPosts.find(singlePost => singlePost.id === id);
+
+    // Piccolo controllo se esiste
+    if (!post) {
+        res.status(404);
+
+        return res.json({
+            error: "Not Found",
+            message: "Post non trovato"
+        })
+    }
+
+    // Aggiorniamo il nostro post
+    post.title = req.body.title;
+    post.content = req.body.content;
+    post.image = req.body.image;
+    post.tags = req.body.tags;
+
+    // Controlliamo il posts
+    console.log(myPosts)
+
+    // Restituiamo il nostro post appena aggiornato
+    res.json(post);
 }
 
 // modificare una piccola parte dell elemento id corrente, patch/:id      UPDATE
