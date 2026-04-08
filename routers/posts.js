@@ -3,7 +3,6 @@ const router = express.Router()
 
 const postController = require("../controllers/postsController")
 
-
 //lista json di tutti i post, get                                         INDEX
 router.get("/", postController.index)
 
