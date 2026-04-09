@@ -1,7 +1,6 @@
 const myPosts = require("../data/myPosts")
 
 
-
 // lista json di tutti i post, get                                        INDEX
 function index(req, res) {
     res.json(myPosts)
@@ -15,7 +14,7 @@ function show(req, res) {
 }
 
 // Creazione nuovi posts, post                                            CREATE
-function store(req, res) {
+function store(req, res) { 
     const newId = myPosts[myPosts.length - 1].id + 1;
     console.log(req.body);
 
@@ -43,7 +42,7 @@ function store(req, res) {
 // cambiare tutto l elemento dell id corrente, put/:id                    UPDATE
 function update(req, res) {
 
-    
+
     const id = parseInt(req.params.id)
 
     // cerchiamo il nostro post tramite id
@@ -63,7 +62,7 @@ function update(req, res) {
     post.title = req.body.title;
     post.content = req.body.content;
     post.image = req.body.image;
-    post.tags = req.body.tags;
+    post.tags = [req.body.tags];
 
     // Controlliamo il posts
     console.log(myPosts)
