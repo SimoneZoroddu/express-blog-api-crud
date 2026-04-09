@@ -3,12 +3,6 @@ const router = express.Router()
 
 const postController = require("../controllers/postsController")
 
-function logga(req, res, next) {
-    console.log('fa tutto');
-    
-    next(); 
-}
-
 
 //lista json di tutti i post, get                                         INDEX
 router.get("/", postController.index)
@@ -17,7 +11,7 @@ router.get("/", postController.index)
 router.get("/:id", postController.show)
 
 // Creazione nuovi posts, post                                            CREATE
-router.post('/', logga, postController.store)
+router.post('/', postController.store)
 
 // cambiare tutto l elemento dell id corrente, put/:id                    UPDATE
 router.put("/:id", postController.update)
